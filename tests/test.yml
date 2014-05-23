@@ -1,6 +1,15 @@
 ---
 - hosts: localhost
   remote_user: root
+
+  pre_tasks:
+    - name: Update apt cache if needed.
+      apt: update_cache=yes cache_valid_time=3600
+
+    - name: Add ondrej repository for later versions of PHP.
+      # Note: Remove '-oldstable' for PHP 5.5.x.
+      apt_repository: repo='ppa:ondrej/php5-oldstable'
+
   roles:
     - geerlingguy.git
     - geerlingguy.apache
