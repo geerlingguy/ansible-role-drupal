@@ -1,0 +1,21 @@
+---
+# TODO: Make this configuration work with nginx, apache, all OSes.
+- name: Add Apache virtualhost for Drupal.
+  template: >
+    src=drupal-vhost.conf.j2
+    dest=/etc/apache2/sites-available/{{ drupal_domain }}.conf
+    owner=root group=root mode=644
+  notify: restart webserver
+
+- name: Symlink Drupal virtualhost to sites-enabled.
+  file: >
+    src=/etc/apache2/sites-available/{{ drupal_domain }}.conf
+    dest=/etc/apache2/sites-enabled/{{ drupal_domain }}.conf
+    state=link
+  notify: restart webserver
+
+- name: Remove default virtualhost file.
+  file: >
+    path=/etc/apache2/sites-enabled/000-default
+    state=absent
+  notify: restart webserver

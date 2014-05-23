@@ -1,0 +1,20 @@
+---
+# The core version you want to use (e.g. 6.x, 7.x, 8.x).
+drupal_core_version: "8.x"
+
+# The path where Drupal will be downloaded and installed.
+drupal_core_path: "/var/www/drupal-{{ drupal_core_version }}-dev"
+
+# Your drupal site's domain name (e.g. 'example.com').
+drupal_domain: "drupaltest.dev"
+
+# Your Drupal site name.
+drupal_site_name: "Drupal Example"
+
+# The webserver you're running (e.g. 'apache2', 'httpd', 'nginx').
+drupal_webserver_daemon: apache2
+
+# Drupal MySQL database username and password.
+drupal_mysql_user: drupal
+drupal_mysql_password: password
+drupal_mysql_database: drupal

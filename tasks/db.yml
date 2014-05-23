@@ -1,0 +1,16 @@
+---
+- name: Create a MySQL database for Drupal.
+  mysql_db: >
+    db={{ drupal_mysql_database }}
+    state=present
+
+- name: Create a MySQL user for Drupal.
+  mysql_user: >
+    name={{ drupal_mysql_user }}
+    host={{ item }}
+    priv={{ drupal_mysql_database }}.*:ALL
+    password={{ drupal_mysql_password }}
+  with_items:
+    - 127.0.0.1
+    - ::1
+    - localhost

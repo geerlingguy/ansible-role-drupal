@@ -1,0 +1,7 @@
+---
+- name: Create hosts entry for domain.
+  lineinfile: >
+    dest=/etc/hosts
+    regexp="^127.0.0.1    {{ drupal_domain }}"
+    line="127.0.0.1    {{ drupal_domain }}"
+    state=present
