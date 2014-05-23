@@ -4,6 +4,8 @@
 
 Installs [Drupal](https://drupal.org/), an open source content management platform, on Linux hosts running the generic LAMP stack.
 
+Currently the role is only guaranteed to work on a LAMP stack on Debian/Ubuntu, though only minimal changes will need to be made to make the role with other platforms (notably RedHat/CentOS), and with other webservers besides Apache (thus enabling Drupal on a LEMP stack fairly easily).
+
 ## Requirements
 
 None.
