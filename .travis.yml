@@ -17,7 +17,7 @@ install:
   - "printf '[defaults]\nroles_path = ../' > ansible.cfg"
 
   # Install required dependencies.
-  - ansible-galaxy install geerlingguy.git geerlingguy.apache geerlingguy.mysql geerlingguy.php geerlingguy.composer geerlingguy.drush
+  - ansible-galaxy install geerlingguy.git geerlingguy.apache geerlingguy.mysql geerlingguy.php geerlingguy.php-mysql geerlingguy.composer geerlingguy.drush
 
 script:
   # Check the role/playbook's syntax.

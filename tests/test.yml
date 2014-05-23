@@ -15,6 +15,7 @@
     - geerlingguy.apache
     - geerlingguy.mysql
     - geerlingguy.php
+    - geerlingguy.php-mysql
     - geerlingguy.composer
     - geerlingguy.drush
     - ansible-role-drupal
