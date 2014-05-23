@@ -1,5 +1,7 @@
 # Ansible Role: Drupal
 
+[![Build Status](https://travis-ci.org/geerlingguy/ansible-role-drupal.svg?branch=master)](https://travis-ci.org/geerlingguy/ansible-role-drupal)
+
 Installs [Drupal](https://drupal.org/), an open source content management platform, on Linux hosts running the generic LAMP stack.
 
 ## Requirements
