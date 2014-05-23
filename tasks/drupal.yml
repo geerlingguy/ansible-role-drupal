@@ -17,7 +17,7 @@
 - name: Install Drupal.
   command: >
     drush si -y --site-name="{{ drupal_site_name }}" --account-name=admin
-    --account-pass=admin --db-url=mysql://root@localhost/{{ drupal_domain }}
+    --account-pass=admin --db-url=mysql://root@localhost/{{ drupal_mysql_database }}
     chdir={{ drupal_core_path }}
     creates={{ drupal_core_path }}/sites/default/settings.php
   notify: restart webserver
