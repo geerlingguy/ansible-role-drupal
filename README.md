@@ -43,9 +43,11 @@ MySQL database username, password, and database name for Drupal to use.
 
 ## Dependencies
 
+  - geerlingguy.git
   - geerlingguy.apache
   - geerlingguy.mysql
   - geerlingguy.php
+  - geerlingguy.composer
   - geerlingguy.drush
 
 ## Example Playbook
