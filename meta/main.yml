@@ -1,8 +1,10 @@
 ---
 dependencies:
+  - { role: geerlingguy.git }
   - { role: geerlingguy.apache }
   - { role: geerlingguy.mysql }
   - { role: geerlingguy.php }
+  - { role: geerlingguy.composer }
   - { role: geerlingguy.drush }
 
 galaxy_info:
