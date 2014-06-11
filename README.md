@@ -47,6 +47,7 @@ MySQL database username, password, and database name for Drupal to use.
   - geerlingguy.apache
   - geerlingguy.mysql
   - geerlingguy.php
+  - geerlingguy.php-mysql
   - geerlingguy.composer
   - geerlingguy.drush
 
