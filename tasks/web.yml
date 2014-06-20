@@ -19,3 +19,15 @@
     path=/etc/apache2/sites-enabled/000-default
     state=absent
   notify: restart webserver
+
+- name: Remove second default virtualhost file.
+  file: >
+    path=/etc/apache2/sites-enabled/default
+    state=absent
+  notify: restart webserver
+
+- name: Remove third default virtualhost file.
+  file: >
+    path=/etc/apache2/sites-enabled/default-ssl
+    state=absent
+  notify: restart webserver

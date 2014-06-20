@@ -15,11 +15,11 @@ None.
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
     # The core version you want to use (e.g. 6.x, 7.x, 8.x).
-    drupal_core_version: "8.x"
+    repo_branch: "8.x"
 
 The version of Drupal you would like to use (can be any git branch, tag, or commit ref). Examples: "6.x", "7.x", "8.x", "5a3ef30".
 
-    drupal_core_path: "/var/www/drupal-{{ drupal_core_version }}-dev"
+    drupal_core_path: "/var/www/drupal-{{ repo_branch }}-dev"
 
 The path where Drupal will be downloaded and installed (needs to be readable by the webserver).
 
@@ -61,7 +61,7 @@ MySQL database username, password, and database name for Drupal to use.
 
 *Inside `vars/main.yml`*:
 
-    drupal_core_version: "7.x"
+    repo_branch: "7.x"
     drupal_domain: "drupaltest.dev"
     ... etc ...
 

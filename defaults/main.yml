@@ -1,9 +1,9 @@
 ---
 # The core version you want to use (e.g. 6.x, 7.x, 8.x).
-drupal_core_version: "8.x"
+repo_branch: "8.x"
 
 # The path where Drupal will be downloaded and installed.
-drupal_core_path: "/var/www/drupal-{{ drupal_core_version }}-dev"
+drupal_core_path: "/var/www/drupal-{{ repo_branch }}-dev"
 
 # Your drupal site's domain name (e.g. 'example.com').
 drupal_domain: "drupaltest.dev"
@@ -18,3 +18,8 @@ drupal_webserver_daemon: apache2
 drupal_mysql_user: drupal
 drupal_mysql_password: password
 drupal_mysql_database: drupal
+
+#Default to drupal.org but allow per-project repos as well
+drupal_repo: http://git.drupal.org/project/drupal.git
+
+drupal_mail: admin@example.com
