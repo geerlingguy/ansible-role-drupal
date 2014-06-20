@@ -26,6 +26,12 @@
     creates={{ drupal_core_path }}/sites/default/settings.php
   notify: restart webserver
 
+- name: Set file permissions on webroot
+  file: >
+    path={{ drupal_core_path }}
+    group="www-data"
+    mode=755
+
 # SEE: https://drupal.org/node/2121849#comment-8413637
 - name: Set permissions properly on settings.php.
   file: >
@@ -35,6 +41,7 @@
 - name: Set permissions properly on files directory.
   file: >
     path={{ drupal_core_path }}/sites/default/files
-    mode=777
+    mode=775
+    group="www-data"
     state=directory
     recurse=yes
