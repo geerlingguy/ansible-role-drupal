@@ -14,10 +14,10 @@ None.
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
-    # The core version you want to use (e.g. 6.x, 7.x, 8.x).
-    drupal_core_version: "8.x"
+    # The core version you want to use (e.g. 6.x, 7.x, 8.0.x).
+    drupal_core_version: "8.0.x"
 
-The version of Drupal you would like to use (can be any git branch, tag, or commit ref). Examples: "6.x", "7.x", "8.x", "5a3ef30".
+The version of Drupal you would like to use (can be any git branch, tag, or commit ref). Examples: "6.x", "7.x", "8.0.x", "5a3ef30".
 
     drupal_core_path: "/var/www/drupal-{{ drupal_core_version }}-dev"
 
