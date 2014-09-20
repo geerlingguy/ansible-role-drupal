@@ -1,4 +1,7 @@
 ---
+# The url of the git repo you want to install
+repo_url: "http://git.drupal.org/project/drupal.git"
+
 # The core version you want to use (e.g. 6.x, 7.x, 8.0.x).
 drupal_core_version: "8.0.x"
 

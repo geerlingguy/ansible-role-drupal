@@ -14,6 +14,11 @@ None.
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
+    # The url of the git repo you want to install
+    repo_url: "http://git.drupal.org/project/drupal.git"
+
+The public url of the git repository you want to clone. See drupal_core_version for checking cloning a particular branch.
+
     # The core version you want to use (e.g. 6.x, 7.x, 8.0.x).
     drupal_core_version: "8.0.x"
 
