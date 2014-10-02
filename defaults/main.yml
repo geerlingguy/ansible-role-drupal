@@ -21,3 +21,7 @@ drupal_mysql_database: drupal
 
 # The Drupal git url from which Drupal will be cloned.
 drupal_repo_url: "http://git.drupal.org/project/drupal.git"
+
+# The Drupal install profile to be used
+# See note in readme if installing the Drupal 6.x
+drupal_install_profile: standard

@@ -16,7 +16,7 @@
 
 - name: Install Drupal.
   command: >
-    drush si -y
+    drush si {{ drupal_install_profile }} -y
     --site-name="{{ drupal_site_name }}"
     --account-name=admin
     --account-pass=admin
