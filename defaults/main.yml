@@ -20,4 +20,4 @@ drupal_mysql_password: password
 drupal_mysql_database: drupal
 
 # The Drupal git url from which Drupal will be cloned.
-repo_url: "http://git.drupal.org/project/drupal.git"
+drupal_repo_url: "http://git.drupal.org/project/drupal.git"

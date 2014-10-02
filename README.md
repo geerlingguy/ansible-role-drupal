@@ -41,9 +41,9 @@ The daemon name for the webserver you're running (could be `apache2`, `httpd`, `
 
 MySQL database username, password, and database name for Drupal to use.
 
-    repo_url: "http://git.drupal.org/project/drupal.git"
+    drupal_repo_url: "http://git.drupal.org/project/drupal.git"
 
-The public url of the git repository you want to clone. See drupal_core_version for checking cloning a particular branch.
+The public url of the git repository you want to clone. Use `drupal_core_version` to clone a particular branch. (*Note: Usually you shouldn't change this from the default, unless you need to use a private fork of Drupal.*).
 
 ## Dependencies
 
