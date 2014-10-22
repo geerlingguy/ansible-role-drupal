@@ -45,6 +45,10 @@ MySQL database username, password, and database name for Drupal to use.
 
 The public url of the git repository you want to clone. Use `drupal_core_version` to clone a particular branch. (*Note: Usually you shouldn't change this from the default, unless you need to use a private fork of Drupal.*).
 
+    drupal_install_profile: standard
+
+The install profile to use. If you're installing Drupal 6.x, you should update this from 'standard' to 'default'.
+
 ## Dependencies
 
   - geerlingguy.git
