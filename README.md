@@ -31,6 +31,14 @@ The domain/DNS name of the drupal site. If using for local testing/development, 
 
 The site name (will be used as the home page title and anywhere else the site name is displayed).
 
+    drupal_admin_name: admin
+
+The username that gets assigned to the super admin (user 1).
+
+    drupal_admin_password: admin
+
+The password for the super admin.
+
     drupal_webserver_daemon: apache2
 
 The daemon name for the webserver you're running (could be `apache2`, `httpd`, `nginx`, etc.). Used to restart the appropriate service after Drupal is configured and installed.
