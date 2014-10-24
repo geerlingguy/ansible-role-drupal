@@ -11,10 +11,8 @@ drupal_domain: "drupaltest.dev"
 # Your Drupal site name.
 drupal_site_name: "Drupal Example"
 
-# Your Drupal super admin name
+# Your Drupal site admin account credentials.
 drupal_admin_name: admin
-
-# Your Drupal super admin password
 drupal_admin_password: admin
 
 # The webserver you're running (e.g. 'apache2', 'httpd', 'nginx').
