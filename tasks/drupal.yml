@@ -25,6 +25,13 @@
     path="{{ drupal_core_path }}/sites/default/settings.php"
   register: drupal_installed
 
+- name: Set permissions so drush can install drupal.
+  file: >
+    path={{ drupal_core_path }}/sites/default
+    mode=755
+    state=directory
+  when: drupal_installed.stat.exists == false
+
 - name: Install Drupal.
   command: >
     drush si {{ drupal_install_profile }} -y
