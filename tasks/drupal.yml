@@ -20,6 +20,11 @@
     dest={{ drupal_core_path }}
   when: drupal_site.stat.exists == false
 
+- name: Check if Drupal is already installed.
+  stat: >
+    path="{{ drupal_core_path }}/sites/default/settings.php"
+  register: drupal_installed
+
 - name: Install Drupal.
   command: >
     drush si {{ drupal_install_profile }} -y
@@ -29,6 +34,8 @@
     --db-url=mysql://{{ drupal_mysql_user }}:{{ drupal_mysql_password }}@localhost/{{ drupal_mysql_database }}
     chdir={{ drupal_core_path }}
     creates={{ drupal_core_path }}/sites/default/settings.php
+  when: drupal_installed.stat.exists == false
+  notify: restart webserver
 
 # SEE: https://drupal.org/node/2121849#comment-8413637
 - name: Set permissions properly on settings.php.
