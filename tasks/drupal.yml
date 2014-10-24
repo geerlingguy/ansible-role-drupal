@@ -12,6 +12,7 @@
     repo={{ drupal_repo_url }}
     version={{ drupal_core_version }}
     update={{ drupal_keep_updated }}
+    accept_hostkey=yes
     dest={{ drupal_core_path }}
 
 - name: Install Drupal.
