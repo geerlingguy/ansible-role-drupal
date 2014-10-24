@@ -6,7 +6,11 @@
 #     creates={{ drupal_core_path }}/index.php
 #     chdir=/var/www
 
-# Download Drupal using Git.
+- name: Check if Drupal is already present.
+  stat: >
+    path={{ drupal_core_path }}
+  register: drupal_site
+
 - name: Check out Drupal Core to the default location.
   git: >
     repo={{ drupal_repo_url }}
@@ -14,6 +18,7 @@
     update={{ drupal_keep_updated }}
     accept_hostkey=yes
     dest={{ drupal_core_path }}
+  when: drupal_site.stat.exists == false
 
 - name: Install Drupal.
   command: >
