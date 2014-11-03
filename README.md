@@ -50,6 +50,10 @@ MySQL database username, password, and database name for Drupal to use.
 
 The public url of the git repository you want to clone. Use `drupal_core_version` to clone a particular branch. (*Note: Usually you shouldn't change this from the default, unless you need to use a private fork of Drupal.*).
 
+    drupal_keep_updated: no
+
+Whether to update the repo above to the latest commit in the branch identified by `drupal_core_version` (the git tag or branch) whenever this playbook runs. (*Warning: Setting this to `yes` can cause your Drupal codebase to change over time, requiring other deployment steps and update scripts to be run. Use with caution!).
+
     drupal_install_profile: standard
 
 The install profile to use. If you're installing Drupal 6.x, you should update this from 'standard' to 'default'.

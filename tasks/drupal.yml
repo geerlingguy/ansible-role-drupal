@@ -11,7 +11,7 @@
   git: >
     repo={{ drupal_repo_url }}
     version={{ drupal_core_version }}
-    update=no
+    update={{ drupal_keep_updated }}
     dest={{ drupal_core_path }}
 
 - name: Install Drupal.
