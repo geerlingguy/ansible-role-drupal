@@ -6,13 +6,31 @@
 #     creates={{ drupal_core_path }}/index.php
 #     chdir=/var/www
 
-# Download Drupal using Git.
+- name: Check if Drupal is already present.
+  stat: >
+    path={{ drupal_core_path }}
+  register: drupal_site
+
 - name: Check out Drupal Core to the default location.
   git: >
     repo={{ drupal_repo_url }}
     version={{ drupal_core_version }}
     update={{ drupal_keep_updated }}
+    accept_hostkey=yes
     dest={{ drupal_core_path }}
+  when: drupal_site.stat.exists == false
+
+- name: Check if Drupal is already installed.
+  stat: >
+    path="{{ drupal_core_path }}/sites/default/settings.php"
+  register: drupal_installed
+
+- name: Set permissions so drush can install drupal.
+  file: >
+    path={{ drupal_core_path }}/sites/default
+    mode=755
+    state=directory
+  when: drupal_installed.stat.exists == false
 
 - name: Install Drupal.
   command: >
@@ -23,6 +41,8 @@
     --db-url=mysql://{{ drupal_mysql_user }}:{{ drupal_mysql_password }}@localhost/{{ drupal_mysql_database }}
     chdir={{ drupal_core_path }}
     creates={{ drupal_core_path }}/sites/default/settings.php
+  when: drupal_installed.stat.exists == false
+  notify: restart webserver
 
 # SEE: https://drupal.org/node/2121849#comment-8413637
 - name: Set permissions properly on settings.php.
