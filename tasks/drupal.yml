@@ -8,11 +8,11 @@
 
 # Download Drupal using Git.
 - name: Check out Drupal Core to the default location.
-  git: >
-    repo={{ drupal_repo_url }}
-    version={{ drupal_core_version }}
-    update={{ drupal_keep_updated }}
-    dest={{ drupal_core_path }}
+  git:
+    repo: "{{ drupal_repo_url }}"
+    version: "{{ drupal_core_version }}"
+    update: "{{ drupal_keep_updated }}"
+    dest: "{{ drupal_core_path }}"
 
 - name: Install Drupal.
   command: >
@@ -26,13 +26,13 @@
 
 # SEE: https://drupal.org/node/2121849#comment-8413637
 - name: Set permissions properly on settings.php.
-  file: >
-    path={{ drupal_core_path }}/sites/default/settings.php
-    mode=744
+  file:
+    path: "{{ drupal_core_path }}/sites/default/settings.php"
+    mode: 0744
 
 - name: Set permissions properly on files directory.
-  file: >
-    path={{ drupal_core_path }}/sites/default/files
-    mode=777
-    state=directory
-    recurse=yes
+  file:
+    path: "{{ drupal_core_path }}/sites/default/files"
+    mode: 0777
+    state: directory
+    recurse: yes

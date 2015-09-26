@@ -2,17 +2,12 @@
 - hosts: localhost
   remote_user: root
 
-  vars:
-    # Use default log file size so Travis CI VM allows MySQL restart.
-    - mysql_innodb_log_file_size: "5M"
-
   pre_tasks:
     - name: Update apt cache if needed.
       apt: update_cache=yes cache_valid_time=3600
 
     - name: Add ondrej repository for later versions of PHP.
-      # Note: Remove '-oldstable' for PHP 5.5.x.
-      apt_repository: repo='ppa:ondrej/php5-oldstable'
+      apt_repository: repo='ppa:ondrej/php5-5.6'
 
   roles:
     - geerlingguy.git

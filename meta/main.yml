@@ -1,12 +1,12 @@
 ---
 dependencies:
-  - { role: geerlingguy.git }
-  - { role: geerlingguy.apache }
-  - { role: geerlingguy.mysql }
-  - { role: geerlingguy.php }
-  - { role: geerlingguy.php-mysql }
-  - { role: geerlingguy.composer }
-  - { role: geerlingguy.drush }
+  - geerlingguy.git
+  - geerlingguy.apache
+  - geerlingguy.mysql
+  - geerlingguy.php
+  - geerlingguy.php-mysql
+  - geerlingguy.composer
+  - geerlingguy.drush
 
 galaxy_info:
   author: geerlingguy
