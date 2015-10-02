@@ -5,6 +5,7 @@
   vars:
     # Use default log file size so Travis CI VM allows MySQL restart.
     - mysql_innodb_log_file_size: "5M"
+    - mysql_root_password: ""
 
   pre_tasks:
     - name: Update apt cache if needed.

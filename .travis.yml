@@ -25,7 +25,6 @@ script:
 
   # Run the role/playbook with ansible-playbook.
   - "ansible-playbook -i tests/inventory tests/$SITE --connection=local --sudo"
-  - "ansible-playbook -i tests/inventory tests/$SITE --connection=local --sudo"
 
   # Run the role/playbook again, checking to make sure it's idempotent.
   - >
@@ -37,3 +36,9 @@ script:
   # Request the Drupal home page, to make sure it is running and responds.
   # TODO: Check for some default text? Check /user path?
   - "curl http://drupaltest.dev/"
+
+after_failure:
+  # Some MySQL debugging (show all the logs).
+  - "sudo ls -lah /var/log"
+  - "sudo cat /var/log/mysql/error.log"
+  - "sudo cat /root/.my.cnf"
