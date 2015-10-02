@@ -8,6 +8,7 @@ env:
 before_install:
   - sudo apt-get update -qq
   - sudo apt-get install -y curl postfix
+  - sudo apt-get remove --purge 'mysql*'
 
 install:
   # Install Ansible.
@@ -34,11 +35,4 @@ script:
     || (echo 'Idempotence test: fail' && exit 1)
 
   # Request the Drupal home page, to make sure it is running and responds.
-  # TODO: Check for some default text? Check /user path?
   - "curl http://drupaltest.dev/"
-
-after_failure:
-  # Some MySQL debugging (show all the logs).
-  - "sudo ls -lah /var/log"
-  - "sudo cat /var/log/mysql/error.log"
-  - "sudo cat /root/.my.cnf"
