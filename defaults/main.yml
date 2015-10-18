@@ -33,3 +33,7 @@ drupal_keep_updated: no
 # The Drupal install profile to be used
 # See note in readme if installing the Drupal 6.x
 drupal_install_profile: standard
+
+# Whether to use the included vhost file. Set this to `false` if you intend
+# to handle vhosts with another role (e.g. geerlingguy.apache).
+drupal_include_web_vhost: true

@@ -58,6 +58,11 @@ Whether to update the repo above to the latest commit in the branch identified b
 
 The install profile to use. If you're installing Drupal 6.x, you should update this from 'standard' to 'default'.
 
+    drupal_include_web_vhost: true
+
+Whether to use the included vhost file. Set this to `false` if you intend to
+handle vhosts with another role (e.g. geerlingguy.apache).
+
 ## Dependencies
 
   - geerlingguy.git
