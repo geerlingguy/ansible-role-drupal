@@ -36,3 +36,6 @@ script:
 
   # Request the Drupal home page, to make sure it is running and responds.
   - "curl http://drupaltest.dev/"
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
