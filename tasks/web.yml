@@ -3,7 +3,7 @@
 - name: Add Apache virtualhost for Drupal.
   template:
     src: drupal-vhost.conf.j2
-    dest: "/etc/apache2/sites-enabled/{{ drupal_domain }}.conf"
+    dest: "/{{ apache_sites_conf_path }}/{{ drupal_domain }}.conf"
     owner: root
     group: root
     mode: 0644
