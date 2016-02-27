@@ -13,14 +13,17 @@ galaxy_info:
   description: Install Drupal - a world class CMS
   company: "Midwestern Mac, LLC"
   license: "license (BSD, MIT)"
-  min_ansible_version: 1.4
+  min_ansible_version: 1.8
   platforms:
-  - name: Ubuntu
-    versions:
-    - all
-  - name: Debian
-    versions:
-    - all
+    - name: EL
+      versions:
+      - all
+    - name: Ubuntu
+      versions:
+      - all
+    - name: Debian
+      versions:
+      - all
   galaxy_tags:
     - development
     - web

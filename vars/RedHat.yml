@@ -1,2 +1,2 @@
 ---
-apache_sites_conf_path: /etc/httpd/conf.d
+drupal_sites_conf_path: /etc/httpd/conf.d

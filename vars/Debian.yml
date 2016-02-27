@@ -1,2 +1,2 @@
 ---
-apache_sites_conf_path: /etc/apache2/sites-enabled
+drupal_sites_conf_path: /etc/apache2/sites-enabled
