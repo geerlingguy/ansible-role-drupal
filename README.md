@@ -27,6 +27,10 @@ The path where Drupal will be downloaded and installed (needs to be readable by 
 
 The domain/DNS name of the drupal site. If using for local testing/development, you can use whatever you want (or keep the default), and add an entry to your `/etc/hosts` file like `127.0.0.1 mytestdrupalsite.com`.
 
+    drupal_hosts_file_path: "/etc/hosts"
+
+The location of the hosts file to manage (see `drupal_domain`). If set to `''`, your hosts file will not be touched.
+
     drupal_site_name: "Drupal Example"
 
 The site name (will be used as the home page title and anywhere else the site name is displayed).

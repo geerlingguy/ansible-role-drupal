@@ -8,6 +8,9 @@ drupal_core_path: "/var/www/drupal-{{ drupal_core_version }}-dev"
 # Your drupal site's domain name (e.g. 'example.com').
 drupal_domain: "drupaltest.dev"
 
+# Whether to add an entry for the drupal_domain in your /etc/hosts file.
+drupal_hosts_file_path: "/etc/hosts"
+
 # Your Drupal site name.
 drupal_site_name: "Drupal Example"
 

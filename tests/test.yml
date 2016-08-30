@@ -1,6 +1,10 @@
 ---
 - hosts: all
 
+  vars:
+    apache_remove_default_vhost: true
+    drupal_hosts_file_path: ''
+
   pre_tasks:
     - name: Update apt cache.
       apt: update_cache=yes
