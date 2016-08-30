@@ -1,18 +1,17 @@
 ---
-- hosts: localhost
-  remote_user: root
-
-  vars:
-    # Use default log file size so Travis CI VM allows MySQL restart.
-    - mysql_innodb_log_file_size: "5M"
-    - mysql_root_password: ""
+- hosts: all
 
   pre_tasks:
-    - name: Update apt cache if needed.
-      apt: update_cache=yes cache_valid_time=3600
+    - name: Update apt cache.
+      apt: update_cache=yes
+      when: ansible_os_family == 'Debian'
 
-    - name: Add ondrej repository for later versions of PHP.
-      apt_repository: repo='ppa:ondrej/php5-5.6'
+    - name: Install curl.
+      package: name=curl
+
+    - name: Add repository for PHP 7.0.
+      apt_repository: repo='ppa:ondrej/php'
+      when: ansible_distribution == "Ubuntu" and ansible_distribution_version != "16.04"
 
   roles:
     - geerlingguy.git
@@ -22,4 +21,4 @@
     - geerlingguy.php-mysql
     - geerlingguy.composer
     - geerlingguy.drush
-    - ansible-role-drupal
+    - role_under_test
