@@ -22,6 +22,7 @@ drupal_admin_password: admin
 drupal_webserver_daemon: apache2
 
 # Drupal MySQL host, database, username and password.
+drupal_mysql_install: true
 drupal_mysql_user: drupal
 drupal_mysql_password: password
 drupal_mysql_database: drupal
