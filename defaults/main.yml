@@ -25,7 +25,7 @@ drupal_webserver_daemon: apache2
 drupal_mysql_user: drupal
 drupal_mysql_password: password
 drupal_mysql_database: drupal
-drupal_mysql_password: localhost
+drupal_mysql_host: localhost
 
 # The Drupal git url from which Drupal will be cloned.
 drupal_repo_url: "http://git.drupal.org/project/drupal.git"
