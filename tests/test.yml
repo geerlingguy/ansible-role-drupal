@@ -17,6 +17,15 @@
       apt_repository: repo='ppa:ondrej/php'
       when: ansible_distribution == "Ubuntu" and ansible_distribution_version != "16.04"
 
+    - name: Copy initctl_faker into place for Ubuntu 14.04.
+      copy:
+        src: initctl_faker
+        dest: /sbin/initctl
+        mode: 0755
+        force: yes
+      when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '14.04'
+      changed_when: false
+
   roles:
     - geerlingguy.git
     - geerlingguy.apache
