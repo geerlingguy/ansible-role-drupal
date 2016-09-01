@@ -11,7 +11,7 @@ env:
       run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
     - distro: ubuntu1404
       init: /sbin/init
-      run_opts: ""
+      run_opts: "--privileged"
 
 services:
   - docker
