@@ -39,9 +39,5 @@ script:
   # Make sure Drupal is running.
   - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm curl http://drupaltest.dev/'
 
-after_success:
-  # Clean up.
-  - 'docker stop "$(cat ${container_id})"'
-
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
