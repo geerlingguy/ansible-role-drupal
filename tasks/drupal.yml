@@ -20,7 +20,7 @@
     --site-name="{{ drupal_site_name }}"
     --account-name={{ drupal_admin_name }}
     --account-pass={{ drupal_admin_password}}
-    --db-url=mysql://{{ drupal_mysql_user }}:{{ drupal_mysql_password }}@localhost/{{ drupal_mysql_database }}
+    --db-url=mysql://{{ drupal_mysql_user }}:{{ drupal_mysql_password }}@{{ drupal_mysql_host }}/{{ drupal_mysql_database }}
     chdir={{ drupal_core_path }}
     creates={{ drupal_core_path }}/sites/default/settings.php
 

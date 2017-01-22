@@ -4,5 +4,6 @@
 
 - include: general.yml
 - include: db.yml
+  when: drupal_mysql_install
 - include: web.yml
 - include: drupal.yml
