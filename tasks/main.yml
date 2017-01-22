@@ -5,4 +5,5 @@
 - include: general.yml
 - include: db.yml
 - include: web.yml
+  when: drupal_include_web_vhost
 - include: drupal.yml
