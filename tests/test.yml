@@ -37,6 +37,10 @@
         - curl
         - unzip
 
+    - name: Add repository for Apache 2.4.9+ (Ubuntu 14).
+      apt_repository: repo='ppa:ondrej/apache2'
+      when: ansible_distribution == "Ubuntu" and ansible_distribution_release == "trusty"
+
     - name: Add repository for PHP 7.0 (Ubuntu).
       apt_repository: repo='ppa:ondrej/php'
       when: ansible_distribution == "Ubuntu" and ansible_distribution_version != "16.04"
