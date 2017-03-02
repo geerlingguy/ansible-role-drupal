@@ -37,4 +37,4 @@
 
 # Install site if configured.
 - include: tasks/install-site.yml
-  when: install_site
+  when: drupal_install_site
