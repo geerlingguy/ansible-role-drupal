@@ -31,8 +31,11 @@
       apt: update_cache=yes cache_valid_time=86400
       when: ansible_os_family == 'Debian'
 
-    - name: Install curl.
-      package: name=curl
+    - name: Install dependencies.
+      package: name={{ item }}
+      with_items:
+        - curl
+        - unzip
 
     - name: Add repository for PHP 7.0 (Ubuntu).
       apt_repository: repo='ppa:ondrej/php'
@@ -49,6 +52,10 @@
           - php7.0-opcache
           - php7.0-apcu
           - php7.0-xml
+          - php7.0-zip
+          - php7.0-mbstring
+          - php7.0-json
+          - php7.0-gd
       when: ansible_distribution == 'Debian'
 
     - name: Copy initctl_faker into place for Ubuntu 14.04.
