@@ -28,6 +28,8 @@ N/A
 
 See the example playbook used for Travis CI tests (in `tests/test.yml`) for a simple example. See also: [Drupal VM](https://www.drupalvm.com), which uses this role to set up Drupal.
 
+Currently, this role assumes you've either already cloned an existing Drupal codebase into the `drupal_core_path`, you have a Drush make file or `composer.json` already configured to build your site, or you are building a brand new Drupal site (this is the default) using the [Composer template for Drupal projects](https://github.com/drupal-composer/drupal-project).
+
     - hosts: webserver
       vars_files:
         - vars/main.yml

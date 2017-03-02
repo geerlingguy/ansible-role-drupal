@@ -22,5 +22,5 @@
 
 - name: drupalvm_database shim
   set_fact:
-    drupal_database_backend: "{{ drupalvm_database }}"
+    drupal_db_backend: "{{ drupalvm_database }}"
   when: drupalvm_database|default('')
