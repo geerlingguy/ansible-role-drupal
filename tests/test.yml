@@ -2,6 +2,9 @@
 - hosts: all
 
   vars:
+    php_enable_webserver: false
+    php_enablerepo: "remi,remi-php71"
+
     apache_remove_default_vhost: true
     apache_vhosts:
       - servername: "{{ drupal_domain }}"
@@ -12,6 +15,7 @@
                 SetHandler "proxy:fcgi://{{ php_fpm_listen }}"
               </FilesMatch>
 
+    mysql_enablerepo: "remi"
     mysql_databases:
       - name: "{{ drupal_db_name }}"
         encoding: utf8mb4
@@ -24,7 +28,7 @@
 
   pre_tasks:
     - name: Update apt cache.
-      apt: update_cache=yes cache_valid_time=600
+      apt: update_cache=yes cache_valid_time=86400
       when: ansible_os_family == 'Debian'
 
     - name: Install curl.
@@ -34,13 +38,17 @@
       apt_repository: repo='ppa:ondrej/php'
       when: ansible_distribution == "Ubuntu" and ansible_distribution_version != "16.04"
 
-    - name: Enable remi repo for MySQL (RedHat).
-      set_fact: mysql_enablerepo="remi"
-      when: ansible_os_family == "RedHat"
-
-    - name: Enable remi repo for PHP 7.1 (RedHat).
-      set_fact: php_enablerepo="remi,remi-php71"
-      when: ansible_os_family == "RedHat"
+    - name: Set php_packages for PHP 7.0 Debian 8 install.
+      set_fact:
+        php_packages:
+          - php7.0-common
+          - php7.0-cli
+          - php7.0-dev
+          - php7.0-fpm
+          - libpcre3-dev
+          - php7.0-opcache
+          - php7.0-apcu
+      when: ansible_distribution == 'Debian'
 
     - name: Copy initctl_faker into place for Ubuntu 14.04.
       copy:
@@ -54,6 +62,8 @@
   roles:
     - name: geerlingguy.repo-remi
       when: ansible_os_family == "RedHat"
+    - role: geerlingguy.repo-dotdeb
+      when: ansible_distribution == 'Debian'
     - geerlingguy.apache
     - geerlingguy.mysql
     - geerlingguy.php

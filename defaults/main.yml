@@ -1,19 +1,19 @@
 ---
-# Set this to 'false' if you don't need to install drupal (using the drupal_*
+# Set this to 'false' if you don't need to install Drupal (using the drupal_*
 # settings below), but instead copy down a database (e.g. using drush sql-sync).
 drupal_install_site: true
 
 # Set this to 'true' and 'drupal_build_composer*' to 'false' if you would like
 # to build a Drupal make file with Drush.
 drupal_build_makefile: false
-drush_makefile_path: "{{ config_dir }}/drupal.make.yml"
+drush_makefile_path: "/path/to/drupal.make.yml"
 drush_make_options: "--no-gitinfofile"
 
 # Set 'drupal_build_makefile' to 'false' and this to 'true' if you are using a
-# composer based site deployment strategy.
+# Composer-based site deployment strategy.
 drupal_build_composer: false
-drupal_composer_path: "{{ config_dir }}/drupal.composer.json"
-drupal_composer_install_dir: "/var/www/drupalvm/drupal"
+drupal_composer_path: "/path/to/drupal.composer.json"
+drupal_composer_install_dir: "/var/www/drupal"
 drupal_composer_dependencies:
   - "drupal/devel:1.x-dev"
 
