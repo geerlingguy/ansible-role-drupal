@@ -1,0 +1,26 @@
+---
+# Shims for Drupal VM backwards compatibility. To be removed by 2018.
+- Name: build_makefile shim
+  set_fact:
+    drupal_build_makefile: "{{ build_makefile }}"
+  when: build_makefile|default('')
+
+- Name: build_composer shim
+  set_fact:
+    drupal_build_composer: "{{ build_composer }}"
+  when: build_composer|default('')
+
+- Name: build_composer_project shim
+  set_fact:
+    drupal_build_composer_project: "{{ build_composer_project }}"
+  when: build_composer_project|default('')
+
+- Name: install_site shim
+  set_fact:
+    drupal_install_site: "{{ install_site }}"
+  when: install_site|default('')
+
+- Name: drupalvm_database shim
+  set_fact:
+    drupal_database_backend: "{{ drupalvm_database }}"
+  when: drupalvm_database|default('')

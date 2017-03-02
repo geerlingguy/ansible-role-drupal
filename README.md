@@ -12,6 +12,8 @@ Drupal is a PHP-based application that is meant to run behind a typical LAMP/LEM
   - MySQL or similar Database server (Recommended: `geerlingguy.mysql` or `geerlingguy.postgresql`)
   - PHP (Recommended: `geerlingguy.php` along with other PHP-related roles like `php-mysql`).
 
+Drush is not an absolute requirement, but it's handy to have, and also required if you use this role to Install a Drupal site (`drupal_install_site: true`). You can use `geerlingguy.drush` to install Drush.
+
 ## Role Variables
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):

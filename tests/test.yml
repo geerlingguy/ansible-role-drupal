@@ -3,7 +3,14 @@
 
   vars:
     apache_remove_default_vhost: true
-    drupal_hosts_file_path: ''
+    apache_vhosts:
+      - servername: "{{ drupal_domain }}"
+        serveralias: "www.{{ drupal_domain }}"
+        documentroot: "{{ drupal_core_path }}"
+        extra_parameters: |
+              <FilesMatch \.php$>
+                SetHandler "proxy:fcgi://{{ php_fpm_listen }}"
+              </FilesMatch>
 
   pre_tasks:
     - name: Update apt cache.
@@ -13,9 +20,17 @@
     - name: Install curl.
       package: name=curl
 
-    - name: Add repository for PHP 7.0.
+    - name: Add repository for PHP 7.0 (Ubuntu).
       apt_repository: repo='ppa:ondrej/php'
       when: ansible_distribution == "Ubuntu" and ansible_distribution_version != "16.04"
+
+    - name: Enable remi repo for MySQL (RedHat).
+      set_fact: mysql_enablerepo="remi"
+      when: ansible_os_family == "RedHat"
+
+    - name: Enable remi repo for PHP 7.1 (RedHat).
+      set_fact: php_enablerepo="remi,remi-php71"
+      when: ansible_os_family == "RedHat"
 
     - name: Copy initctl_faker into place for Ubuntu 14.04.
       copy:
@@ -27,7 +42,8 @@
       changed_when: false
 
   roles:
-    - geerlingguy.git
+    - name: geerlingguy.repo-remi
+      when: ansible_os_family == "RedHat"
     - geerlingguy.apache
     - geerlingguy.mysql
     - geerlingguy.php
