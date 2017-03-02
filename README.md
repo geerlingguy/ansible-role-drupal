@@ -26,10 +26,18 @@ N/A
 
 ## Example Playbook
 
-    - hosts: servers
+See the example playbook used for Travis CI tests (in `tests/test.yml`) for a simple example. See also: [Drupal VM](https://www.drupalvm.com), which uses this role to set up Drupal.
+
+    - hosts: webserver
       vars_files:
         - vars/main.yml
       roles:
+        - geerlingguy.apache
+        - geerlingguy.mysql
+        - geerlingguy.php
+        - geerlingguy.php-mysql
+        - geerlingguy.composer
+        - geerlingguy.drush
         - geerlingguy.drupal
 
 *Inside `vars/main.yml`*:
