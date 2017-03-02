@@ -1,38 +1,41 @@
 ---
-# The core version you want to use (e.g. 6.x, 7.x, 8.0.x).
-drupal_core_version: "8.0.x"
+# Set this to 'false' if you don't need to install Drupal (using the drupal_*
+# settings below), but instead copy down a database (e.g. using drush sql-sync).
+drupal_install_site: true
 
-# The path where Drupal will be downloaded and installed.
-drupal_core_path: "/var/www/drupal-{{ drupal_core_version }}-dev"
+# Set this to 'true' and 'drupal_build_composer*' to 'false' if you would like
+# to build a Drupal make file with Drush.
+drupal_build_makefile: false
+drush_makefile_path: "/path/to/drupal.make.yml"
+drush_make_options: "--no-gitinfofile"
 
-# Your drupal site's domain name (e.g. 'example.com').
+# Set 'drupal_build_makefile' to 'false' and this to 'true' if you are using a
+# Composer-based site deployment strategy.
+drupal_build_composer: false
+drupal_composer_path: "/path/to/drupal.composer.json"
+drupal_composer_install_dir: "/var/www/drupal"
+drupal_composer_dependencies:
+  - "drupal/devel:1.x-dev"
+
+# Set this to 'true' and 'drupal_build_makefile', 'drupal_build_composer' to
+# 'false' if you are using Composer's create-project as a site deployment
+# strategy.
+drupal_build_composer_project: true
+drupal_composer_project_package: "drupal-composer/drupal-project:8.x-dev"
+drupal_composer_project_options: "--prefer-dist --stability dev --no-interaction"
+
+# Required Drupal settings.
+drupal_core_path: "{{ drupal_composer_install_dir }}/web"
+drupal_core_owner: "{{ ansible_ssh_user | default(ansible_env.SUDO_USER, true) | default(ansible_env.USER, true) | default(ansible_user_id) }}"
+drupal_db_user: drupal
+drupal_db_password: drupal
+drupal_db_name: drupal
+drupal_db_backend: mysql
+
+# Settings for installing a Drupal site if 'drupal_install_site:' is 'true'.
 drupal_domain: "drupaltest.dev"
-
-# Whether to add an entry for the drupal_domain in your /etc/hosts file.
-drupal_hosts_file_path: "/etc/hosts"
-
-# Your Drupal site name.
-drupal_site_name: "Drupal Example"
-
-# Your Drupal site admin account credentials.
-drupal_admin_name: admin
-drupal_admin_password: admin
-
-# The webserver you're running (e.g. 'apache2', 'httpd', 'nginx').
-drupal_webserver_daemon: apache2
-
-# Drupal MySQL database username and password.
-drupal_mysql_user: drupal
-drupal_mysql_password: password
-drupal_mysql_database: drupal
-
-# The Drupal git url from which Drupal will be cloned.
-drupal_repo_url: "http://git.drupal.org/project/drupal.git"
-
-# Whether to update the repo above to the latest commit in the branch identified
-# by `drupal_core_version` (the git tag or branch) whenever this playbook runs.
-drupal_keep_updated: no
-
-# The Drupal install profile to be used
-# See note in readme if installing the Drupal 6.x
+drupal_site_name: "Drupal"
 drupal_install_profile: standard
+drupal_enable_modules: [ 'devel' ]
+drupal_account_name: admin
+drupal_account_pass: admin

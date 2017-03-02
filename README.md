@@ -2,89 +2,93 @@
 
 [![Build Status](https://travis-ci.org/geerlingguy/ansible-role-drupal.svg?branch=master)](https://travis-ci.org/geerlingguy/ansible-role-drupal)
 
-Installs [Drupal](https://drupal.org/), an open source content management platform, on Linux hosts running the generic LAMP stack.
-
-Currently the role is only guaranteed to work on a LAMP stack on Debian/Ubuntu, though only minimal changes will need to be made to make the role with other platforms (notably RedHat/CentOS), and with other webservers besides Apache (thus enabling Drupal on a LEMP stack fairly easily).
+Builds and installs [Drupal](https://drupal.org/), an open source content management platform.
 
 ## Requirements
 
-None.
+Drupal is a PHP-based application that is meant to run behind a typical LAMP/LEMP/LEPP/etc. stack, so you'll need at least the following:
+
+  - Apache or Nginx (Recommended: `geerlingguy.apache` or `geerlingguy.nginx`)
+  - MySQL or similar Database server (Recommended: `geerlingguy.mysql` or `geerlingguy.postgresql`)
+  - PHP (Recommended: `geerlingguy.php` along with other PHP-related roles like `php-mysql`).
+
+Drush is not an absolute requirement, but it's handy to have, and also required if you use this role to Install a Drupal site (`drupal_install_site: true`). You can use `geerlingguy.drush` to install Drush.
 
 ## Role Variables
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
-    # The core version you want to use (e.g. 6.x, 7.x, 8.0.x).
-    drupal_core_version: "8.0.x"
+    drupal_install_site: true
 
-The version of Drupal you would like to use (can be any git branch, tag, or commit ref). Examples: "6.x", "7.x", "8.0.x", "5a3ef30".
+Set this to `false` if you don't need to install Drupal (using the `drupal_*` settings below), but instead copy down a database (e.g. using `drush sql-sync`).
 
-    drupal_core_path: "/var/www/drupal-{{ drupal_core_version }}-dev"
+    drupal_build_makefile: false
+    drush_makefile_path: "/path/to/drupal.make.yml"
+    drush_make_options: "--no-gitinfofile"
 
-The path where Drupal will be downloaded and installed (needs to be readable by the webserver).
+Set this to `true` and `drupal_build_composer*` to `false` if you would like to build a Drupal make file with Drush.
+
+    drupal_build_composer: false
+    drupal_composer_path: "/path/to/drupal.composer.json"
+    drupal_composer_install_dir: "/var/www/drupal"
+    drupal_composer_dependencies:
+      - "drupal/devel:1.x-dev"
+
+Set `drupal_build_makefile` to `false` and this to `true` if you are using a Composer-based site deployment strategy.
+
+    drupal_build_composer_project: true
+    drupal_composer_project_package: "drupal-composer/drupal-project:8.x-dev"
+    drupal_composer_project_options: "--prefer-dist --stability dev --no-interaction"
+
+Set this to `true` and `drupal_build_makefile`, `drupal_build_composer` to `false` if you are using Composer's `create-project` as a site deployment strategy.
+
+    drupal_core_path: "{{ drupal_composer_install_dir }}/web"
+    drupal_core_owner: "{{ ansible_ssh_user | default(ansible_env.SUDO_USER, true) | default(ansible_env.USER, true) | default(ansible_user_id) }}"
+    drupal_db_user: drupal
+    drupal_db_password: drupal
+    drupal_db_name: drupal
+    drupal_db_backend: mysql
+
+Required Drupal settings.
 
     drupal_domain: "drupaltest.dev"
-
-The domain/DNS name of the drupal site. If using for local testing/development, you can use whatever you want (or keep the default), and add an entry to your `/etc/hosts` file like `127.0.0.1 mytestdrupalsite.com`.
-
-    drupal_hosts_file_path: "/etc/hosts"
-
-The location of the hosts file to manage (see `drupal_domain`). If set to `''`, your hosts file will not be touched.
-
-    drupal_site_name: "Drupal Example"
-
-The site name (will be used as the home page title and anywhere else the site name is displayed).
-
-    drupal_admin_name: admin
-    drupal_admin_password: admin
-
-The username and password for the admin account (user 1).
-
-    drupal_webserver_daemon: apache2
-
-The daemon name for the webserver you're running (could be `apache2`, `httpd`, `nginx`, etc.). Used to restart the appropriate service after Drupal is configured and installed.
-
-    drupal_mysql_user: drupal
-    drupal_mysql_password: password
-    drupal_mysql_database: drupal
-
-MySQL database username, password, and database name for Drupal to use.
-
-    drupal_repo_url: "http://git.drupal.org/project/drupal.git"
-
-The public url of the git repository you want to clone. Use `drupal_core_version` to clone a particular branch. (*Note: Usually you shouldn't change this from the default, unless you need to use a private fork of Drupal.*).
-
-    drupal_keep_updated: no
-
-Whether to update the repo above to the latest commit in the branch identified by `drupal_core_version` (the git tag or branch) whenever this playbook runs. (*Warning: Setting this to `yes` can cause your Drupal codebase to change over time, requiring other deployment steps and update scripts to be run. Use with caution!).
-
+    drupal_site_name: "Drupal"
     drupal_install_profile: standard
+    drupal_enable_modules: [ 'devel' ]
+    drupal_account_name: admin
+    drupal_account_pass: admin
 
-The install profile to use. If you're installing Drupal 6.x, you should update this from 'standard' to 'default'.
+Settings for installing a Drupal site if `drupal_install_site` is `true`.
 
 ## Dependencies
 
-  - geerlingguy.git
-  - geerlingguy.apache
-  - geerlingguy.mysql
-  - geerlingguy.php
-  - geerlingguy.php-mysql
-  - geerlingguy.composer
-  - geerlingguy.drush
+N/A
 
 ## Example Playbook
 
-    - hosts: servers
+See the example playbook used for Travis CI tests (in `tests/test.yml`) for a simple example. See also: [Drupal VM](https://www.drupalvm.com), which uses this role to set up Drupal.
+
+Currently, this role assumes you've either already cloned an existing Drupal codebase into the `drupal_core_path`, you have a Drush make file or `composer.json` already configured to build your site, or you are building a brand new Drupal site (this is the default) using the [Composer template for Drupal projects](https://github.com/drupal-composer/drupal-project).
+
+    - hosts: webserver
       vars_files:
         - vars/main.yml
       roles:
-        - { role: geerlingguy.drupal }
+        - geerlingguy.apache
+        - geerlingguy.mysql
+        - geerlingguy.php
+        - geerlingguy.php-mysql
+        - geerlingguy.composer
+        - geerlingguy.drush
+        - geerlingguy.drupal
 
 *Inside `vars/main.yml`*:
 
-    drupal_core_version: "7.x"
-    drupal_domain: "drupaltest.dev"
-    ... etc ...
+    drupal_install_site: true
+    drupal_build_composer_project: true
+    drupal_composer_install_dir: "/var/www/drupal"
+    drupal_core_path: "{{ drupal_composer_install_dir }}/web"
+    drupal_domain: "example.com"
 
 ## License
 

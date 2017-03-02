@@ -1,19 +1,12 @@
 ---
-dependencies:
-  - geerlingguy.git
-  - geerlingguy.apache
-  - geerlingguy.mysql
-  - geerlingguy.php
-  - geerlingguy.php-mysql
-  - geerlingguy.composer
-  - geerlingguy.drush
+dependencies: []
 
 galaxy_info:
   author: geerlingguy
   description: Install Drupal - a world class CMS
   company: "Midwestern Mac, LLC"
   license: "license (BSD, MIT)"
-  min_ansible_version: 1.8
+  min_ansible_version: 2.0
   platforms:
     - name: EL
       versions:
@@ -27,3 +20,6 @@ galaxy_info:
   galaxy_tags:
     - development
     - web
+    - drupal
+    - cms
+    - php

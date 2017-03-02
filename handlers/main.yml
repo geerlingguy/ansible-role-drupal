@@ -1,3 +1,0 @@
----
-- name: restart webserver
-  service: "name={{ drupal_webserver_daemon }} state=restarted"
