@@ -3,8 +3,8 @@
   file:
     path: "{{ drupal_composer_install_dir }}"
     state: directory
-    owner: "{{ drupal_user }}"
-    group: "{{ drupal_user }}"
+    owner: "{{ drupal_core_owner }}"
+    group: "{{ drupal_core_owner }}"
     mode: 0775
   when: not drupal_site_exists
   failed_when: false
