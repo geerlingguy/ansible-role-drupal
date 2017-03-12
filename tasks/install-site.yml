@@ -39,5 +39,5 @@
     --root={{ drupal_core_path }}
   args:
     chdir: "{{ drupal_core_path }}"
-  when: ("'Successful' not in drupal_site_installed.stdout") and drupal_enable_modules
+  when: ('Successful' not in drupal_site_installed.stdout) and drupal_enable_modules
   become: no
