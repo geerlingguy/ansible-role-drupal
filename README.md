@@ -55,7 +55,7 @@ Required Drupal settings.
     drupal_domain: "drupaltest.dev"
     drupal_site_name: "Drupal"
     drupal_install_profile: standard
-    drupal_enable_modules: [ 'devel' ]
+    drupal_enable_modules: []
     drupal_account_name: admin
     drupal_account_pass: admin
 
