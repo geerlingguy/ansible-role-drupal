@@ -43,7 +43,7 @@ script:
     || (echo 'Idempotence test: fail' && exit 1)
 
   # Make sure Drupal is running.
-  - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm curl http://drupaltest.dev/'
+  - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm curl http://drupaltest.dev/ | grep "Welcome to Drupal"'
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
