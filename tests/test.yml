@@ -4,7 +4,15 @@
   vars:
     php_enable_webserver: false
     php_enablerepo: "remi,remi-php71"
+    php_enable_php_fpm: true
+    php_fpm_listen: "127.0.0.1:9000"
 
+    apache_mods_enabled:
+      - expires.load
+      - ssl.load
+      - rewrite.load
+      - proxy.load
+      - proxy_fcgi.load
     apache_remove_default_vhost: true
     apache_vhosts:
       - servername: "{{ drupal_domain }}"
