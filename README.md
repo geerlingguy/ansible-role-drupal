@@ -22,8 +22,6 @@ Available variables are listed below, along with default values (see `defaults/m
 
 ### Deploy an existing project with Git
 
-    # Set this to 'true' and specify a Git repository if you want to deploy Drupal
-    # to your server from an existing repository.
     drupal_deploy: false
     drupal_deploy_repo: ""
     drupal_deploy_version: master
