@@ -28,7 +28,7 @@ script:
   - ${PWD}/tests/test.sh
 
   # Make sure Drupal is running.
-  - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm curl http://drupaltest.dev/ | grep "Welcome to Drupal"'
+  - 'docker exec --tty ${container_id} env TERM=xterm curl http://drupaltest.dev/ | grep "Welcome to Drupal"'
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
