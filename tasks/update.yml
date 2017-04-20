@@ -1,9 +1,13 @@
 ---
 - name: Run database updates.
-  command: drush updatedb -y --root={{ drupal_core_path }}
+  command: {{ drush_path }} updatedb -y
+  args:
+    chdir: "{{ drupal_core_path }}"
 
 # TODO: Import configuration if configured?
 # TODO: Other commands if configured?
 
 - name: Rebuild Drupal caches.
-  command: drush cache-rebuild --quiet --root={{ drupal_core_path }}
+  command: {{ drush_path }} cache-rebuild --quiet
+  args:
+    chdir: "{{ drupal_core_path }}"
