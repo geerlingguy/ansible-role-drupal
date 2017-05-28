@@ -28,6 +28,7 @@ Available variables are listed below, along with default values (see `defaults/m
     drupal_deploy_update: true
     drupal_deploy_dir: "/var/www/drupal"
     drupal_deploy_accept_hostkey: no
+    drupal_deploy_key: none
 
 Set `drupal_deploy` to `true` and `drupal_build_composer*` to `false` if you would like to deploy Drupal to your server from an existing Git repository. The other options all apply to the Git checkout operation:
 
@@ -36,6 +37,7 @@ Set `drupal_deploy` to `true` and `drupal_build_composer*` to `false` if you wou
   - `update`: whether the repository should be updated to the latest commit, if `version` is a branch
   - `dir`: The directory into which the repository will be checked out
   - `accept_hostkey`: Whether to automatically accept the Git server's hostkey on the first connection.
+  - `drupal_ssh_deploy_key`: SSH key to use for Git repository, if any.  The specified key will be copied from the host machine to the `~/.ssh` directory of the target machine.  If this value is omitted, Git's default behavior will be used.
 
 ### Build a project from a Drush Make file
 

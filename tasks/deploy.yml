@@ -1,4 +1,13 @@
 ---
+- name: Copy deploy key to target.
+  copy:
+    backup: Yes
+    mode: 0400
+    src: "{{ drupal_ssh_deploy_key }}"
+    dest: "~/.ssh/{{ drupal_ssh_deploy_key | basename }}"
+  become: no
+  when: drupal_ssh_deploy_key is defined
+
 - name: Ensure drupal_deploy_dir directory exists.
   file:
     path: "{{ drupal_deploy_dir }}"
@@ -16,6 +25,7 @@
     force: yes
     dest: "{{ drupal_deploy_dir }}"
     accept_hostkey: "{{ drupal_deploy_accept_hostkey }}"
+    key_file: "{{ drupal_ssh_deploy_key is defined | ternary( '~/.ssh/' + (drupal_ssh_deploy_key | default('') | basename), omit) }}"
   register: drupal_deploy_repo_updated
   notify: clear opcache
   become: no
