@@ -1,7 +1,22 @@
 ---
 
+- name: Detect Drupal version.
+  command: drush status drupal-version --format=list
+  args:
+    chdir: "{{ drupal_core_path }}"
+  register: drupal_core_version_output
+
+- name: Set Drupal version.
+  set_fact:
+    drupal_core_version: "{{ drupal_core_version_output.stdout }}"
+
 - name: Run post-update tasks.
   command: "{{ item.command }}"
   args:
     chdir: "{{ item.chdir | default(omit) }}"
   with_items: "{{ drupal_deploy_update_tasks }}"
+
+- name: Rebuild Drupal caches.
+  command: "{{ drush_path }} {{ (drupal_core_version >= '8') | ternary('cache-rebuild','cc all') }} --quiet"
+  args:
+    chdir: "{{ drupal_core_path }}"
