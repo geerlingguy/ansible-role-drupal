@@ -1,7 +1,7 @@
 ---
 
 - name: Detect Drupal version.
-  command: drush status drupal-version --format=list
+  command: "{{ drush_path }} status drupal-version --format=list"
   args:
     chdir: "{{ drupal_core_path }}"
   register: drupal_core_version_output
