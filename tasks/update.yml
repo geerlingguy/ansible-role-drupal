@@ -17,6 +17,6 @@
   with_items: "{{ drupal_deploy_update_tasks }}"
 
 - name: Rebuild Drupal caches.
-  command: "{{ drush_path }} {{ (drupal_core_version >= '8') | ternary('cache-rebuild','cc all') }} --quiet"
+  command: "{{ drush_path }} {{ ( drupal_core_version | version_compare('8', '>=') ) | ternary('cache-rebuild', 'cc all') }} --quiet"
   args:
     chdir: "{{ drupal_core_path }}"
