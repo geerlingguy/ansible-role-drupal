@@ -26,7 +26,7 @@
 
 - name: Run composer install if composer.json is present.
   composer:
-    command: install
+    command: install -n
     working_dir: "{{ drupal_deploy_dir }}"
   when:
     - drupal_deploy_composer_file.stat.exists == true
