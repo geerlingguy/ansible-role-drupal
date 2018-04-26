@@ -15,6 +15,10 @@ env:
   - distro: centos7
     playbook: test-deploy.yml
 
+addons:
+  hosts:
+    - drupaltest.test
+
 script:
   # Configure test script so we can run extra tests after playbook is run.
   - export container_id=$(date +%s)
