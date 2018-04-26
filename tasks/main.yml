@@ -22,7 +22,7 @@
 
 - name: Define drupal_deploy_updated
   set_fact:
-    drupal_deploy_updated: "{{ drupal_deploy_repo_updated.changed|default(false) }}"
+    drupal_deploy_updated: "{{ (drupal_deploy_repo_updated is defined and drupal_deploy_repo_updated.changed) | default(false) }}"
 
 # Run update tasks if Drupal was updated.
 - include_tasks: tasks/update.yml
