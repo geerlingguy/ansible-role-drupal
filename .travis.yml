@@ -15,10 +15,6 @@ env:
   - distro: centos7
     playbook: test-deploy.yml
 
-addons:
-  hosts:
-    - drupaltest.test
-
 script:
   # Configure test script so we can run extra tests after playbook is run.
   - export container_id=$(date +%s)
@@ -32,7 +28,7 @@ script:
   - ${PWD}/tests/test.sh
 
   # Make sure Drupal is running.
-  - 'docker exec --tty ${container_id} env TERM=xterm curl http://drupaltest.test/ | grep "Welcome to Drupal"'
+  - 'docker exec --tty ${container_id} env TERM=xterm curl http://localhost/ | grep "Welcome to Drupal"'
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
