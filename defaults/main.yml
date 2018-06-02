@@ -7,6 +7,7 @@ drupal_deploy_version: master
 drupal_deploy_update: true
 drupal_deploy_dir: "/var/www/drupal"
 drupal_deploy_accept_hostkey: no
+drupal_deploy_composer_install: yes
 drupal_deploy_update_tasks:
   - command: "{{ drush_path }} updatedb -y"
     chdir: "{{ drupal_core_path }}"
