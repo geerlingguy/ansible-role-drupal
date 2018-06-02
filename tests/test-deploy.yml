@@ -17,7 +17,7 @@
     drupal_composer_dependencies: []
 
   pre_tasks:
-    - import_tasks: test-setup.yml
+    - include: test-setup.yml
 
   roles:
     - name: geerlingguy.repo-remi
