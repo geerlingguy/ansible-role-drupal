@@ -14,6 +14,7 @@
     version: "{{ drupal_deploy_version }}"
     update: "{{ drupal_deploy_update }}"
     force: true
+    depth: "{{ drupal_deploy_depth }}"
     dest: "{{ drupal_deploy_dir }}"
     separate_git_dir: "{{ drupal_deploy_gitdir }}"
     accept_hostkey: "{{ drupal_deploy_accept_hostkey }}"
