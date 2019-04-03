@@ -6,6 +6,7 @@ drupal_deploy_repo: ""
 drupal_deploy_version: master
 drupal_deploy_update: true
 drupal_deploy_dir: "/var/www/drupal"
+drupal_deploy_gitdir: "/var/www/drupal.git"
 drupal_deploy_accept_hostkey: false
 drupal_deploy_composer_install: true
 
