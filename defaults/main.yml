@@ -15,6 +15,8 @@ drupal_build_makefile: false
 drush_makefile_path: "/path/to/drupal.make.yml"
 drush_make_options: "--no-gitinfofile"
 
+drupal_composer_no_dev: true
+
 # Set 'drupal_build_makefile' to 'false' and this to 'true' if you are using a
 # Composer-based site deployment strategy.
 drupal_build_composer: false
