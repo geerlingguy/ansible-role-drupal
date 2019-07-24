@@ -15,6 +15,9 @@ drupal_build_makefile: false
 drush_makefile_path: "/path/to/drupal.make.yml"
 drush_make_options: "--no-gitinfofile"
 
+# Composer let's you configure the `bin-dir` under the `config` key.
+drupal_composer_bin_dir: "vendor/bin"
+
 # Set 'drupal_build_makefile' to 'false' and this to 'true' if you are using a
 # Composer-based site deployment strategy.
 drupal_build_composer: false
