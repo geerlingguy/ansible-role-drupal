@@ -54,10 +54,11 @@ Set this to `true` and `drupal_build_composer*` to `false` if you would like to 
     drupal_build_composer: false
     drupal_composer_path: "/path/to/drupal.composer.json"
     drupal_composer_install_dir: "/var/www/drupal"
+    drupal_composer_no_dev: true
     drupal_composer_dependencies:
       - "drupal/devel:^1.2"
 
-Set `drupal_build_makefile` to `false` and this to `true` if you are using a Composer-based site deployment strategy.
+Set `drupal_build_makefile` to `false` and this to `true` if you are using a Composer-based site deployment strategy. The other options should be relatively straightforward.
 
     drupal_composer_bin_dir: "vendor/bin"
 
