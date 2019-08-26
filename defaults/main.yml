@@ -23,6 +23,7 @@ drupal_composer_bin_dir: "vendor/bin"
 drupal_build_composer: false
 drupal_composer_path: "/path/to/drupal.composer.json"
 drupal_composer_install_dir: "{{ drupal_deploy_dir }}"
+drupal_composer_no_dev: true
 drupal_composer_dependencies:
   - "drupal/devel:^1.2"
 

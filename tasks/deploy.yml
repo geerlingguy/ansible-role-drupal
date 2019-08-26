@@ -29,6 +29,7 @@
   composer:
     command: install
     working_dir: "{{ drupal_deploy_dir }}"
+    no_dev: "{{ drupal_composer_no_dev }}"
   when:
     - drupal_deploy_composer_file.stat.exists
     - drupal_deploy_composer_install
