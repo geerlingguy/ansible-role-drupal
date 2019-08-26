@@ -33,6 +33,7 @@ drupal_composer_project_options: "--prefer-dist --stability dev --no-interaction
 # Required Drupal settings.
 drupal_core_path: "{{ drupal_deploy_dir }}/web"
 drupal_core_owner: "{{ ansible_ssh_user | default(ansible_env.SUDO_USER, true) | default(ansible_env.USER, true) | default(ansible_user_id) }}"
+drupal_core_owner_become: false
 drupal_db_user: drupal
 drupal_db_password: drupal
 drupal_db_name: drupal
