@@ -71,6 +71,10 @@ Set this to `true` and `drupal_build_makefile`, `drupal_build_composer` to `fals
 
     drupal_core_path: "{{ drupal_deploy_dir }}/web"
     drupal_core_owner: "{{ ansible_ssh_user | default(ansible_env.SUDO_USER, true) | default(ansible_env.USER, true) | default(ansible_user_id) }}"
+    drupal_core_owner_become: false
+
+The path to Drupal's root, along with the ownership properties. If you are not running Ansible as the user that should have ownership over the core path, specify the desired system user in `drupal_core_owner` and set `drupal_core_owner_become: true`.
+
     drupal_db_user: drupal
     drupal_db_password: drupal
     drupal_db_name: drupal
