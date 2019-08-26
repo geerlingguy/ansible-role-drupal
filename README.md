@@ -59,6 +59,10 @@ Set this to `true` and `drupal_build_composer*` to `false` if you would like to 
 
 Set `drupal_build_makefile` to `false` and this to `true` if you are using a Composer-based site deployment strategy.
 
+    drupal_composer_bin_dir: "vendor/bin"
+
+If you set the `bin-dir` in your project's `composer.json` file to a value other than `vendor/bin`, override this variable with the same directory path.
+
 ### Create a new project using `drupal-project` (Composer)
 
     drupal_build_composer_project: true
