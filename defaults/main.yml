@@ -55,4 +55,5 @@ drupal_install_profile: standard
 drupal_site_install_extra_args: []
 drupal_enable_modules: []
 drupal_account_name: admin
+drupal_account_mail: admin@example.com
 drupal_account_pass: admin
