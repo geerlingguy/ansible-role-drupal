@@ -26,7 +26,6 @@ drupal_composer_install_dir: "{{ drupal_deploy_dir }}"
 drupal_composer_no_dev: true
 drupal_composer_dependencies:
   - "drush/drush:^10.1"
-  - "drupal/devel:^2.1"
 
 # Set this to 'true' and 'drupal_build_makefile', 'drupal_build_composer' to
 # 'false' if you are using Composer's create-project as a site deployment

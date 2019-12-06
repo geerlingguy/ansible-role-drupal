@@ -56,7 +56,7 @@ Set this to `true` and `drupal_build_composer*` to `false` if you would like to 
     drupal_composer_install_dir: "/var/www/drupal"
     drupal_composer_no_dev: true
     drupal_composer_dependencies:
-      - "drupal/devel:^1.2"
+      - "drush/drush:^10.1"
 
 Set `drupal_build_makefile` to `false` and this to `true` if you are using a Composer-based site deployment strategy. The other options should be relatively straightforward.
 
