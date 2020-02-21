@@ -6,10 +6,10 @@ env:
   global:
     - ROLE_NAME: drupal
   matrix:
-    - MOLECULE_DISTRO: centos7
+    - MOLECULE_DISTRO: centos8
     - MOLECULE_DISTRO: ubuntu1804
-    - MOLECULE_DISTRO: debian9
-    - MOLECULE_DISTRO: centos7
+    - MOLECULE_DISTRO: debian10
+    - MOLECULE_DISTRO: centos8
       MOLECULE_PLAYBOOK: playbook-deploy.yml
 
 install:
