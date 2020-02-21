@@ -8,7 +8,8 @@ env:
   matrix:
     - MOLECULE_DISTRO: centos8
     - MOLECULE_DISTRO: ubuntu1804
-    - MOLECULE_DISTRO: debian10
+    # See: https://github.com/geerlingguy/ansible-role-drupal/issues/77
+    # - MOLECULE_DISTRO: debian10
     - MOLECULE_DISTRO: centos8
       MOLECULE_PLAYBOOK: playbook-deploy.yml
 
