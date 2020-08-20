@@ -13,6 +13,7 @@
   copy:
     src: "{{ drupal_composer_path }}"
     dest: "/tmp/drupalvm-composer.json"
+    mode: 0644
   when: drupal_composer_path and not drupal_site_exists
   become: false
 
