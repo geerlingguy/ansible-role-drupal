@@ -1,6 +1,6 @@
 # Ansible Role: Drupal
 
-[![Build Status](https://travis-ci.org/geerlingguy/ansible-role-drupal.svg?branch=master)](https://travis-ci.org/geerlingguy/ansible-role-drupal)
+[![Build Status](https://travis-ci.com/geerlingguy/ansible-role-drupal.svg?branch=master)](https://travis-ci.com/geerlingguy/ansible-role-drupal)
 
 Builds and installs [Drupal](https://drupal.org/), an open source content management platform.
 
