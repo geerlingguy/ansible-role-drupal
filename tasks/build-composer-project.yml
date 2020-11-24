@@ -35,7 +35,7 @@
 
 # Use manual composer require tasks until Ansible 2.10.4 is released.
 - name: Install dependencies with composer require (this may take a while).
-  command: "composer require {{ item }} -d {{ drupal_composer_install_dir }}"
+  command: "{{ composer_path }} require {{ item }} -d {{ drupal_composer_install_dir }}"
   register: composer_require_result
   changed_when: "'Nothing to install' not in composer_require_result.stdout"
   with_items: "{{ drupal_composer_dependencies|default([]) }}"
