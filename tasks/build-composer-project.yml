@@ -37,7 +37,7 @@
 - name: Install dependencies with composer require (this may take a while).
   command: "{{ composer_path }} require {{ item }} -d {{ drupal_composer_install_dir }}"
   register: composer_require_result
-  changed_when: "'Nothing to install' not in composer_require_result.stdout"
+  changed_when: "'Nothing to install' not in composer_require_result.stderr"
   with_items: "{{ drupal_composer_dependencies|default([]) }}"
   become: false
   environment:
