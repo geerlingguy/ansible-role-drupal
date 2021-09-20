@@ -45,8 +45,8 @@ jobs:
             playbook: converge.yml
           - distro: ubuntu1804
             playbook: converge.yml
-          - distro: debian10
-            playbook: converge.yml
+          # - distro: debian10
+          #   playbook: converge.yml
           - distro: rockylinux8
             playbook: deploy.yml
 
