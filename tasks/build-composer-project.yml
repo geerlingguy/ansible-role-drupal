@@ -30,8 +30,28 @@
   command: >
     cp -r /tmp/composer-project/. {{ drupal_composer_install_dir }}/
     creates={{ drupal_core_path }}/index.php
-  become: false
+  become: true
+  become_user: '{{ drupal_core_owner }}'
   when: not drupal_site_exists
+
+- name: Get drupal_core_owners homedir
+  # a way to get home directory of an arbitrary user
+  # https://stackoverflow.com/questions/33343215/how-to-get-an-arbitrary-remote-users-home-directory-in-ansible
+  user:
+    name: '{{ drupal_core_owner }}'
+    state: present
+  check_mode: true
+  register: drupal_core_owner_user_registered
+  failed_when: drupal_core_owner_user_registered.changed
+
+- name: ensure caching directory for composer exists and has access rights
+  file:
+    path: "{{ drupal_core_owner_user_registered.home }}/.cache"
+    state: directory
+    owner: "{{ drupal_core_owner }}"
+    group: "{{ drupal_core_owner }}"
+    mode: 0775
+  become: true
 
 - name: Install dependencies with composer require (this may take a while).
   composer:
@@ -39,7 +59,8 @@
     arguments: "{{ item }}"
     working_dir: "{{ drupal_composer_install_dir }}"
   with_items: "{{ drupal_composer_dependencies | default([]) }}"
-  become: false
+  become: true
+  become_user: '{{ drupal_core_owner }}'
   environment:
     COMPOSER_PROCESS_TIMEOUT: 1200
     COMPOSER_MEMORY_LIMIT: '-1'

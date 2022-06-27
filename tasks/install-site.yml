@@ -31,7 +31,8 @@
     chdir: "{{ drupal_core_path }}"
   notify: clear opcache
   when: "'Drupal bootstrap' not in drupal_site_installed.stdout"
-  become: false
+  become: true
+  become_user: '{{ drupal_core_owner }}'
 
 - name: Install configured modules with drush.
   command: >
@@ -40,4 +41,5 @@
   args:
     chdir: "{{ drupal_core_path }}"
   when: ('Drupal bootstrap' not in drupal_site_installed.stdout) and drupal_enable_modules
-  become: false
+  become: true
+  become_user: '{{ drupal_core_owner }}'
