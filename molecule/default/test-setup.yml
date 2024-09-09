@@ -1,7 +1,16 @@
 ---
 - name: Update apt cache.
-  apt: update_cache=yes cache_valid_time=600
+  apt:
+    update_cache: true
+    cache_valid_time: 600
   when: ansible_os_family == 'Debian'
+
+- name: Install curl (RHEL).
+  dnf:
+    name: curl
+    allowerasing: true
+    state: present
+  when: ansible_os_family == 'RedHat'
 
 - name: Install dependencies.
   package:
@@ -9,3 +18,4 @@
       - curl
       - unzip
       - sendmail
+    state: present
