@@ -1,6 +1,6 @@
 # Ansible Role: Drupal
 
-[![CI](https://github.com/geerlingguy/ansible-role-drupal/workflows/CI/badge.svg?event=push)](https://github.com/geerlingguy/ansible-role-drupal/actions?query=workflow%3ACI)
+[![CI](https://github.com/geerlingguy/ansible-role-drupal/actions/workflows/ci.yml/badge.svg)](https://github.com/geerlingguy/ansible-role-drupal/actions/workflows/ci.yml)
 
 Builds and installs [Drupal](https://drupal.org/), an open source content management platform.
 
